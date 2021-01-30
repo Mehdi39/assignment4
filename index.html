@@ -123,9 +123,12 @@
 
         <script>
 
+            // initail values
             var subtotal = 0;
             var vat = 0;
             var total = 0;
+
+
             document.getElementById('first-class').value = 0;
             const increaseBtn = document.getElementById('increase-btn1');
             increaseBtn.addEventListener('click', function () {
@@ -201,7 +204,6 @@
                     document.getElementById('economy-class').value = ticketNumberValue;
 
                     subtotal = subtotal - 100;
-
                     document.getElementById('subtotal').innerText = subtotal;
 
                     vat = (subtotal / 100) * 10;
@@ -218,8 +220,17 @@
             // purchase alrt
             var purchaseBtn = document.getElementById('purchase-btn');
             purchaseBtn.addEventListener('click', function() {
-                alert("Purchse DONE :)");
+                var thanksMsg = "Thanks for dicovering the world with us 😀";
+                var totalEconomy = "\nTotal Economy Ticket: " + document.getElementById('economy-class').value;
+                var totalFirstClass = "\nTotal First Class: " + document.getElementById('economy-class').value;
+                var totalBill = "\nTotal Bill: " + document.getElementById('total').innerText + " Only"
+
+                alert(thanksMsg +  totalEconomy + totalFirstClass + totalBill);
+                
+                
             })
+
+
         </script>
 </body>
 
