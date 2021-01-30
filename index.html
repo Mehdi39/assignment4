@@ -93,7 +93,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$ <span id="vat">00</span></p>
                     </div>
                 </div>
                 <hr>
@@ -102,7 +102,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$ <span id="total">00</span></p>
                     </div>
                 </div>
             </div>
@@ -122,28 +122,10 @@
         <!--Thank You-->
 
         <script>
-            function incrementValue() {
-                var value = parseInt(document.getElementById('number').value, 10);
-                value = isNaN(value) ? 0 : value;
-                value++;
-                document.getElementById('number').value = value;
-            }
 
-            // function increase() {
-            //     document.getElementById('first-class').value = 1;
-            // const increaseBtn = document.getElementById('increase-btn1');
-            // increaseBtn.addEventListener('click', function () {
-            //     const ticketNumberField = document.getElementById('first-class').value;
-            //     var ticketNumberValue = parseInt(ticketNumberField);
-            //     ticketNumberValue++;
-            //     document.getElementById('first-class').value = ticketNumberValue;
-
-                
-            // });
-
-            // return document.getElementById('first-class').value;
-            // }
-
+            var subtotal = 0;
+            var vat = 0;
+            var total = 0;
             document.getElementById('first-class').value = 0;
             const increaseBtn = document.getElementById('increase-btn1');
             increaseBtn.addEventListener('click', function () {
@@ -151,8 +133,17 @@
                 var ticketNumberValue = parseInt(ticketNumberField);
                 ticketNumberValue++;
                 document.getElementById('first-class').value = ticketNumberValue;
-                
-                document.getElementById('subtotal').innerText = (ticketNumberValue * 150);
+
+
+                subtotal = subtotal + 150;
+
+                document.getElementById('subtotal').innerText = subtotal;
+
+                vat = (subtotal / 100) * 10;
+                document.getElementById('vat').innerText = vat;
+
+                total = subtotal + vat;
+                document.getElementById('total').innerText = total;
             });
 
             console.log(increaseBtn);
@@ -166,7 +157,16 @@
                     ticketNumberValue--;
                     document.getElementById('first-class').value = ticketNumberValue;
 
-                    document.getElementById('subtotal').innerText = (ticketNumberValue * 150); 
+                    subtotal = subtotal - 150;
+
+                    document.getElementById('subtotal').innerText = subtotal;
+
+                    vat = (subtotal / 100) * 10;
+                    document.getElementById('vat').innerText = vat;
+
+                    total = subtotal + vat;
+                    document.getElementById('total').innerText = total;
+
                 } else {
                     alert('Brother/Sister Be Positive !');
                 }
@@ -181,7 +181,14 @@
                 ticketNumberValue++;
                 document.getElementById('economy-class').value = ticketNumberValue;
 
-                document.getElementById('subtotal').innerText = (ticketNumberValue * 100);
+                subtotal = subtotal + 100;
+                document.getElementById('subtotal').innerText = subtotal;
+
+                vat = (subtotal / 100) * 10;
+                document.getElementById('vat').innerText = vat;
+
+                total = subtotal + vat;
+                document.getElementById('total').innerText = total;
             });
 
             const decreaseBtn2 = document.getElementById('decrease-btn2');
@@ -193,16 +200,19 @@
                     ticketNumberValue--;
                     document.getElementById('economy-class').value = ticketNumberValue;
 
-                    
+                    subtotal = subtotal - 100;
+
+                    document.getElementById('subtotal').innerText = subtotal;
+
+                    vat = (subtotal / 100) * 10;
+                    document.getElementById('vat').innerText = vat;
+
+                    total = subtotal + vat;
+                    document.getElementById('total').innerText = total;
                 } else {
                     alert('Brother/Sister Be Positive !');
                 }
             });
-
-
-            
-            
-
 
         </script>
 </body>
