@@ -106,7 +106,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="purchase-btn" class="btn-style">Book Now</button>
         </div>
 
 
@@ -214,6 +214,12 @@
                 }
             });
 
+
+            // purchase alrt
+            var purchaseBtn = document.getElementById('purchase-btn');
+            purchaseBtn.addEventListener('click', function() {
+                alert("Purchse DONE :)");
+            })
         </script>
 </body>
 
